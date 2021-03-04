@@ -26,9 +26,16 @@ cookies1 = {
   'YOUTH_SHAREBODY': 'access=WIFI&app_version=2.0.2&article_id=36625696&channel=80000000&channel_code=80000000&cid=80000000&client_version=2.0.2&device_brand=iphone&device_id=48404203&device_model=iPhone&device_platform=iphone&device_type=iphone&from=0&is_hot=0&isnew=1&mobile_type=2&net_type=1&openudid=36cef368385ab4ef4666ce337c13a054&os_version=14.2&phone_code=36cef368385ab4ef4666ce337c13a054&phone_network=WIFI&platform=3&request_time=1614859605&resolution=828x1472&sign=93cbffe6aef9b697a1766cf2834cb665&sm_device_id=20201121232223d9287179b4ff550b9d00eabe7887e093014f1292b017b974&stype=WEIXIN&szlm_ddid=D2O2VAj6%2Bsc5sUzdGOd06cVcrxVZuSQf4Wt6UZzFTN47wX8e&time=1614859606&uid=51638237&uuid=36cef368385ab4ef4666ce337c13a054',
   'YOUTH_STARTBODY': 'access=WIFI&app_version=2.0.2&channel=80000000&channel_code=80000000&cid=80000000&client_version=2.0.2&device_brand=iphone&device_id=48404203&device_model=iPhone&device_platform=iphone&device_type=iphone&isnew=1&mobile_type=2&net_type=1&openudid=36cef368385ab4ef4666ce337c13a054&os_version=14.2&phone_code=36cef368385ab4ef4666ce337c13a054&phone_network=WIFI&platform=3&request_time=1614859867&resolution=828x1472&sm_device_id=20201121232223d9287179b4ff550b9d00eabe7887e093014f1292b017b974&szlm_ddid=D2O2VAj6%2Bsc5sUzdGOd06cVcrxVZuSQf4Wt6UZzFTN47wX8e&time=1614859868&token=b9dfc2a8149133d08a61fc966706d149&uid=51638237&uuid=36cef368385ab4ef4666ce337c13a054'
 }
-cookies2 = {}
+cookies2 = {
+  'YOUTH_HEADER': {"Accept-Encoding":"gzip, deflate, br","Accept":"*/*","Connection":"keep-alive","Referer":"https://kd.youth.cn/h5/20190301taskcenter/ios/index.html?uuid=36cef368385ab4ef4666ce337c13a054&sign=a9dd01afca08df56ce717e6b9d77c487&channel_code=80000000&uid=54172453&channel=80000000&access=Wlan&app_version=2.0.2&device_platform=iphone&cookie_id=445fc8d0cd05929beeb3e8d269cfb6c9&openudid=36cef368385ab4ef4666ce337c13a054&device_type=1&device_brand=iphone&sm_device_id=20201121232223d9287179b4ff550b9d00eabe7887e093014f1292b017b974&device_id=48404203&version_code=202&os_version=14.2&cookie=MDAwMDAwMDAwMJCMpN-w09Wtg5-Bb36eh6CPqHualq2jmrCarWOxp3lshKKGl67eqmqXr6NthJl7mI-shMmXeqDau4StacS3o7GFonqWsKm6q4N5l7GEY2Ft&device_model=iPhone_6_Plus&subv=1.5.1&&cookie=MDAwMDAwMDAwMJCMpN-w09Wtg5-Bb36eh6CPqHualq2jmrCarWOxp3lshKKGl67eqmqXr6NthJl7mI-shMmXeqDau4StacS3o7GFonqWsKm6q4N5l7GEY2Ft&cookie_id=445fc8d0cd05929beeb3e8d269cfb6c9","Content-Type":"","Host":"kd.youth.cn","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","Accept-Language":"zh-cn","X-Requested-With":"XMLHttpRequest"},
+  'YOUTH_READBODY': '',
+  'YOUTH_READTIMEBODY': 'p=9NwGV8Ov71o%3DGvDnjwMsu_ld4qx0YVkhCGSN79Nz9uYVd_6x03zS0fnS8kKdOyWyDMKSICaFBvwH5U4nsR_vvJsjHH2Z81CBL7eyJjtPmVfyM0x8EAsS-_ESh4-JImy11uTAadxMJCYAdD7P_w27pQt6_tIUTgtnDG7LOKwRL-IZbYYNciqqQLKQixTuL9vTgcEbgQW9NUdi_vjXlcCK9HIuTXo885cTj2oJ179vVPgA6OxXbKxeHdSBZQs4ZELQYJiDf3rEh3fMQuuBi3J0fqkIQn4TdqBEXlyYkgMeRW-JBrXjM1LmIT0LIrLi8czB-O-ujqiG-JDtEOQgVxkDhZZUR4nwSS-NmR8I0r_45WkdAOva8b_4dxy5DMsLKFi3SPgTZSwKW4mIawEBFfI754s_TfAVXpWU5i15TEoSHFnGwZdwY9bCs-YLv5CnfuOv9s60c0Rbv1rYkZYxig_4mdv5tGL3tfAbn-sW10iJZF9xkabD63l6uTEfdiYMwF0D1Rn6rZrh7qeKsT0DS8RpdVGApYvnn62i_HExxqh-0fRH2kqAu8Rn1upzC2oMOUwEdrKCn3pwbKUiukbhmHgtpOLyt_uLIdPjyiP2PbsEiOc8wnjEbhgcZUF_2DEF0QifmtFVG8ibepSky67oU2ZKMBJj42hTIm8DXsI_rUVDfOdHJr0GlTFU3rO8l3F01fFXrNf6tLc9syLYvd3Bl5frgo_KiCA-Gv0Ov-QzrQ2FkL9b0sEygPkKcna8fQ3x5AlEs1h5gLHEFofkENvI0wwCuhOB3M5o490EjnQjxIOQ7auGQjTfImxyXRz9NPlqDbQYb-LP2H15dqxB',
+  'YOUTH_WITHDRAWBODY': '',
+  'YOUTH_SHAREBODY': '',
+  'YOUTH_STARTBODY': ''
+}
 
-COOKIELIST = [cookies1,]  # 多账号准备
+COOKIELIST = [cookies1,cookies2,]  # 多账号准备
 
 # ac读取环境变量
 if "YOUTH_HEADER1" in os.environ:
