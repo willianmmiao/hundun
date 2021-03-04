@@ -12,16 +12,19 @@ import os
 from util import send, requests_session
 from datetime import datetime, timezone, timedelta
 
-# YOUTH_HEADER 为对象, 其他参数为字符串，自动提现需要自己抓包
-# 选择微信提现30元，立即兑换，在请求包中找到withdraw2的请求，拷贝请求body类型 p=****** 的字符串，放入下面对应参数即可
-# 分享一篇文章，找到 put.json 的请求，拷贝请求体，放入对应参数
+
+# YOUTH_HEADER 为对象, 其他参数为字符串
+# 选择微信提现30元，立即兑换，在请求包中找到withdraw2的请求，拷贝请求body类型 p=****** 的字符串，放入下面对应参数即可 YOUTH_WITHDRAWBODY
+# 分享一篇文章，找到 put.json 的请求，拷贝请求体，放入对应参数 YOUTH_SHAREBODY
+# 清除App后台，重新启动App，找到 start.json 的请求，拷贝请求体，放入对应参数 YOUTH_STARTBODY
+
 cookies1 = {
   'YOUTH_HEADER': {"Accept-Encoding":"gzip, deflate, br","Cookie":"sensorsdata2019jssdkcross=%7B%22distinct_id%22%3A%2251638237%22%2C%22%24device_id%22%3A%221774e8f5b4f2a9-0f4b7eb478de918-754c1551-304704-1774e8f5b50bd9%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_referrer%22%3A%22%22%2C%22%24latest_referrer_host%22%3A%22%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%7D%2C%22first_id%22%3A%221774e8f5b4f2a9-0f4b7eb478de918-754c1551-304704-1774e8f5b50bd9%22%7D; Hm_lvt_268f0a31fc0d047e5253dd69ad3a4775=1610421104,1612602247,1612604421,1612604427; Hm_lvt_6c30047a5b80400b0fd3f410638b8f0c=1612602247,1612604421; sensorsdata2019jssdkcross=%7B%22distinct_id%22%3A%2251638237%22%2C%22%24device_id%22%3A%221774e8f5b4f2a9-0f4b7eb478de918-754c1551-304704-1774e8f5b50bd9%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_referrer%22%3A%22%22%2C%22%24latest_referrer_host%22%3A%22%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%7D%2C%22first_id%22%3A%221774e8f5b4f2a9-0f4b7eb478de918-754c1551-304704-1774e8f5b50bd9%22%7D","Connection":"keep-alive","Referer":"https://kd.youth.cn/h5/20190301taskcenter/ios/index.html?uuid=36cef368385ab4ef4666ce337c13a054&sign=ede6b3252e30c24089b6cef0f044ad7f&channel_code=80000000&uid=51638237&channel=80000000&access=WIfI&app_version=2.0.0&device_platform=iphone&cookie_id=45bc68c5cc54973f81289f0039a1ee3a&openudid=36cef368385ab4ef4666ce337c13a054&device_type=1&device_brand=iphone&sm_device_id=20201121232223d9287179b4ff550b9d00eabe7887e093014f1292b017b974&device_id=48404203&version_code=200&os_version=14.2&cookie=MDAwMDAwMDAwMJCMpN-w09Wtg5-Bb36eh6CPqHualq2jmrCarWOwt42zhnx-4K_eqmqXr6NthJl7mI-shMmXeqDau4StacS3o7GFonrfr8-iY4Gfn26EY2Ft&device_model=iPhone_6_Plus&subv=1.5.1&&cookie=MDAwMDAwMDAwMJCMpN-w09Wtg5-Bb36eh6CPqHualq2jmrCarWOwt42zhnx-4K_eqmqXr6NthJl7mI-shMmXeqDau4StacS3o7GFonrfr8-iY4Gfn26EY2Ft&cookie_id=45bc68c5cc54973f81289f0039a1ee3a","Accept":"*/*","Host":"kd.youth.cn","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","Accept-Language":"zh-cn","X-Requested-With":"XMLHttpRequest"},
   'YOUTH_READBODY': 'p=9NwGV8Ov71o%3DgW5NEpb6rjb84bkaCQyOq-myT0C-Ktb_pYgxM135XoUfaIpfBqAxRGnFAl1k71C_zMPfUdFlHJTcuxYW9LgBCdTzuda7fnA8r2K-D8AqSYWzt-6LIEcC8SPkaeAgjjv1iCeYI_yckjGbVxJEy1xSQc4qp-_g8cJecymP34l6mTfctKg7kaxHi0R1L2yQjkyBaLUFMP_XNY-r4XVI4Uuw4BDvreocGlOQbcwXrbVvGmLTa1CwlvXqjMUEscxbODycfzWESB3_HXxD2QEUJd5vli2ac_7GFHMPQlilA4rciHQ510Adm3_MwKoRM1FdjThzExuxl-dPaw4biRfbxotcRhHb4YZ4Sr8Xn3hWoB4yBcOa5sHhe_J2ihHKoIZJqzCFqUdK6h31sgpO-lGiBo6Yoc0dRVqlian4MUekcN-RfwsM9QUl2NG14dpqa1efmFJlf58Na2bYtEYz6Cr2E95zlJX94EG1SNBOvH7Ox3PUxldoVItNNWEmSUAkPQKbwSmgY-5KgdXQx4P5YPRJAw1gs770jX2FK7O4G65S6JoVpFOk1oskPCMCxA4slAoQ0lOOXVKf2SD8gRQtzA1V5KfcZ9PtadrAex3d_fupluGi_YMQMu7cWVvltoRt8TzwN89iES1nzPDZJppIoKPSKi05l7hxiRplbDiDqTYfJ8gKa4JgKFAVaPoaWMfE3IYf67dDs10a3ApLxA1gUIjnM3IHy50KrBhN1S1epKxrAbSvLJBSQnmpI57ePnzbnEcUjXq_pJf8oDcHdZ02IOJkgRkA8BhcwQHNDmKHxlz4RPB0VrHoMu8Da96ZOn8oXPFBdRwX_v3PNr4LRPifQqKlJVDIwA%3D%3D',
-  'YOUTH_REDBODY': '',
   'YOUTH_READTIMEBODY': 'p=9NwGV8Ov71o%3DgW5NEpb6rjb84bkaCQyOq-myT0C-Ktb_pYgxM135XoUfaIpfBqAxRGnFAl1k71C_zMPfUdFlHJTcuxYW9LgBCdTzuda7fnA8r2K-D8AqSYWzt-6LIEcC8SPkaeAgjjv1iCeYI_yckjGbVxJEy1xSQc4qp-_g8cJecymP34l6mTfctKg7kaxHi0R1L2yQjkyBaLUFMP_XNY-r4XVI4Uuw4BDvreocGlOQbcwXrbVvGmLTa1CwlvXqjMUEscxbODycfzWESB3_HXya2QP5E-GG3cLeCGj71mkVeUp_1loCX3IK4R2Eqz4w2OZDphqMIheLo0uEog3gAw4KGeGQMwov0dw0VlGdGeKAwHD_baPanAp89dntsM906ksC_aP0rJ7TcMrjmN4IwSFb0-FzTEVMD-yFg73ZduJRHd1PxufPAGCQyfDIUP-jo4hvosGT2HoVSmnDyqNcDyHhDoK7S85Wc6gp-bRZYYNlvCm48MluvRUiZOyfWwJYMjrd8CYqauom4HoNmRMyJZgUw6OEVZJY5LzDYKj9bPtMA7uVVLjHkeOkNfTjlGJrT3HOPZTmhsgyGK7zIoqmvySywmHSrx4F5_WHf7DjM9ZU18HclKaSW1aRNi_Q4DW2sqgJhdKWz9xsUyAE_8i04t4O7dujKbEww4zOHg5YlREQLHwrEHLGtMy9rCpzFgciv92gU3U49siL2n08AuEOnyFEvfBfZAX1uHz0DG1Jox56PghpYBKRArq3O6BXcwzZyXddG4nuPKGO7DT9H_xH13Jbd0QXjiBCRShzide-z_D5UCZyqtQShoHoQLjlLjVxpG_Gl3IHmNU0tEyu6PVvXj4%3D',
   'YOUTH_WITHDRAWBODY': '',
-  'YOUTH_SHAREBODY': ''
+  'YOUTH_SHAREBODY': 'access=WIFI&app_version=2.0.2&article_id=36625696&channel=80000000&channel_code=80000000&cid=80000000&client_version=2.0.2&device_brand=iphone&device_id=48404203&device_model=iPhone&device_platform=iphone&device_type=iphone&from=0&is_hot=0&isnew=1&mobile_type=2&net_type=1&openudid=36cef368385ab4ef4666ce337c13a054&os_version=14.2&phone_code=36cef368385ab4ef4666ce337c13a054&phone_network=WIFI&platform=3&request_time=1614859605&resolution=828x1472&sign=93cbffe6aef9b697a1766cf2834cb665&sm_device_id=20201121232223d9287179b4ff550b9d00eabe7887e093014f1292b017b974&stype=WEIXIN&szlm_ddid=D2O2VAj6%2Bsc5sUzdGOd06cVcrxVZuSQf4Wt6UZzFTN47wX8e&time=1614859606&uid=51638237&uuid=36cef368385ab4ef4666ce337c13a054',
+  'YOUTH_STARTBODY': 'access=WIFI&app_version=2.0.2&channel=80000000&channel_code=80000000&cid=80000000&client_version=2.0.2&device_brand=iphone&device_id=48404203&device_model=iPhone&device_platform=iphone&device_type=iphone&isnew=1&mobile_type=2&net_type=1&openudid=36cef368385ab4ef4666ce337c13a054&os_version=14.2&phone_code=36cef368385ab4ef4666ce337c13a054&phone_network=WIFI&platform=3&request_time=1614859867&resolution=828x1472&sm_device_id=20201121232223d9287179b4ff550b9d00eabe7887e093014f1292b017b974&szlm_ddid=D2O2VAj6%2Bsc5sUzdGOd06cVcrxVZuSQf4Wt6UZzFTN47wX8e&time=1614859868&token=b9dfc2a8149133d08a61fc966706d149&uid=51638237&uuid=36cef368385ab4ef4666ce337c13a054'
 }
 cookies2 = {}
 
@@ -33,17 +36,17 @@ if "YOUTH_HEADER1" in os.environ:
   for i in range(5):
     headerVar = f'YOUTH_HEADER{str(i+1)}'
     readBodyVar = f'YOUTH_READBODY{str(i+1)}'
-    redBodyVar = f'YOUTH_REDBODY{str(i+1)}'
     readTimeBodyVar = f'YOUTH_READTIMEBODY{str(i+1)}'
     withdrawBodyVar = f'YOUTH_WITHDRAWBODY{str(i+1)}'
     shareBodyVar = f'YOUTH_SHAREBODY{str(i+1)}'
-    if headerVar in os.environ and os.environ[headerVar] and readBodyVar in os.environ and os.environ[readBodyVar] and redBodyVar in os.environ and os.environ[redBodyVar] and readTimeBodyVar in os.environ and os.environ[readTimeBodyVar]:
+    startBodyVar = f'YOUTH_STARTBODY{str(i+1)}'
+    if headerVar in os.environ and os.environ[headerVar] and readBodyVar in os.environ and os.environ[readBodyVar] and readTimeBodyVar in os.environ and os.environ[readTimeBodyVar]:
       globals()['cookies'+str(i + 1)]["YOUTH_HEADER"] = json.loads(os.environ[headerVar])
       globals()['cookies'+str(i + 1)]["YOUTH_READBODY"] = os.environ[readBodyVar]
-      globals()['cookies'+str(i + 1)]["YOUTH_REDBODY"] = os.environ[redBodyVar]
       globals()['cookies' + str(i + 1)]["YOUTH_READTIMEBODY"] = os.environ[readTimeBodyVar]
       globals()['cookies' + str(i + 1)]["YOUTH_WITHDRAWBODY"] = os.environ[withdrawBodyVar]
       globals()['cookies' + str(i + 1)]["YOUTH_SHAREBODY"] = os.environ[shareBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_STARTBODY"] = os.environ[startBodyVar]
       COOKIELIST.append(globals()['cookies'+str(i + 1)])
   print(COOKIELIST)
 
@@ -637,6 +640,30 @@ def bereadRed(headers):
     print(traceback.format_exc())
     return
 
+def startApp(headers, body):
+  """
+  启动App
+  :param headers:
+  :return:
+  """
+  time.sleep(0.3)
+  url = 'https://ios.baertt.com/v6/count/start.json'
+  headers = {
+    'User-Agent': 'KDApp/1.8.0 (iPhone; iOS 14.2; Scale/3.00)',
+    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+  }
+  try:
+    response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
+    print('启动App')
+    print(response)
+    if response['success'] == True:
+      return response
+    else:
+      return
+  except:
+    print(traceback.format_exc())
+    return
+
 def run():
   title = f'📚中青看点'
   content = ''
@@ -645,13 +672,16 @@ def run():
   print(f'\n【中青看点】{beijing_datetime.strftime("%Y-%m-%d %H:%M:%S")}')
   hour = beijing_datetime.hour
   for i, account in enumerate(COOKIELIST):
-    headers = account['YOUTH_HEADER']
-    readBody = account['YOUTH_READBODY']
-    redBody = account['YOUTH_REDBODY']
-    readTimeBody = account['YOUTH_READTIMEBODY']
-    withdrawBody = account['YOUTH_WITHDRAWBODY']
-    shareBody = account['YOUTH_SHAREBODY']
+    headers = account.get('YOUTH_HEADER')
+    readBody = account.get('YOUTH_READBODY')
+    readTimeBody = account.get('YOUTH_READTIMEBODY')
+    withdrawBody = account.get('YOUTH_WITHDRAWBODY')
+    shareBody = account.get('YOUTH_SHAREBODY')
+    startBody = account.get('YOUTH_STARTBODY')
     rotaryBody = f'{headers["Referer"].split("&")[15]}&{headers["Referer"].split("&")[8]}'
+
+    if startBody:
+      startApp(headers=headers, body=startBody)
     sign_res = sign(headers=headers)
     if sign_res and sign_res['status'] == 1:
       content += f'【签到结果】：成功 🎉 明日+{sign_res["nextScore"]}青豆'
@@ -679,10 +709,11 @@ def run():
     visit_reward_res = visitReward(body=readBody)
     if visit_reward_res:
       content += f'\n【回访奖励】：+{visit_reward_res["score"]}青豆'
-    shareArticle(headers=headers, body=shareBody)
-    for action in ['beread_extra_reward_one', 'beread_extra_reward_two', 'beread_extra_reward_three']:
-      time.sleep(5)
-      threeShare(headers=headers, action=action)
+    if shareBody:
+      shareArticle(headers=headers, body=shareBody)
+      for action in ['beread_extra_reward_one', 'beread_extra_reward_two', 'beread_extra_reward_three']:
+        time.sleep(5)
+        threeShare(headers=headers, action=action)
     open_box_res = openBox(headers=headers)
     if open_box_res:
       content += f'\n【开启宝箱】：+{open_box_res["score"]}青豆 下次奖励{open_box_res["time"] / 60}分钟'
@@ -692,9 +723,6 @@ def run():
     watch_game_video_res = watchGameVideo(body=readBody)
     if watch_game_video_res:
       content += f'\n【激励视频】：{watch_game_video_res["score"]}个青豆'
-    # article_red_res = articleRed(body=redBody)
-    # if article_red_res:
-    #   content += f'\n【惊喜红包】：+{article_red_res["score"]}个青豆'
     read_time_res = readTime(body=readTimeBody)
     if read_time_res:
       content += f'\n【阅读时长】：共计{int(read_time_res["time"]) // 60}分钟'
