@@ -11,7 +11,7 @@ from util import send, requests_session
 
 # 参考 https://github.com/Zero-S1/xmly_speed/blob/master/xmly_speed.py
 
-cookies1 = ""
+cookies1 = "_xmLog=h5&34f98010-8467-4f99-92ac-71664685acb3&2.2.5; 1&_device=iPhone&5B188D84-8E6F-4A3E-AE21-C188894BD1AE&2.1.3; 1&_token=282920760&F1EFC940140CBEA69DD1CEA3751A91E9424AB1A43C2656D2509964334F73D08E7E9046A60545161M14FE18A68BF11CE_; NSUP=42EEE7B5%2C4200D46A%2C1615191998464; XD=Xpbrf1oqCn83z1N7W0eB206CmAMHW1AAb+1w9M963xqmaFuwFQcnFYlMQV+8Y6yH3NIO+SEpUjA1gpLQxXLlSg==; XUM=5B188D84-8E6F-4A3E-AE21-C188894BD1AE; ainr=0; c-oper=%E6%9C%AA%E7%9F%A5; channel=ios-b1; device_model=iPhone 7 Plus; idfa=FEDB0146-EB87-4D73-A267-3CB1026DB68F; impl=com.ximalaya.tingLite; ip=10.206.111.204; net-mode=WIFI; res=1242%2C2208"
 
 cookies2 = ""
 
