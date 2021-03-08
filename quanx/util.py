@@ -18,10 +18,10 @@ from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 
 # 通知服务
-BARK = ''                                                                 # bark服务,自行搜索; secrets可填;
+BARK = 'https://api.day.app/vWjojnEs2rRiFzSfRcYoBD'                                                                 # bark服务,自行搜索; secrets可填;
 SCKEY = ''                                                                # Server酱的SCKEY; secrets可填
-TG_BOT_TOKEN = ''                                                         # tg机器人的TG_BOT_TOKEN; secrets可填
-TG_USER_ID = ''                                                           # tg机器人的TG_USER_ID; secrets可填
+TG_BOT_TOKEN = '1610757066:AAET5OjZgXVb_CKOcj3O3j945D9cIAIhN-Y'                                                         # tg机器人的TG_BOT_TOKEN; secrets可填
+TG_USER_ID = '1212068357'                                                           # tg机器人的TG_USER_ID; secrets可填
 TG_PROXY_IP = ''                                                          # tg机器人的TG_PROXY_IP; secrets可填
 TG_PROXY_PORT = ''                                                        # tg机器人的TG_PROXY_PORT; secrets可填
 DD_BOT_ACCESS_TOKEN = ''                                                  # 钉钉机器人的DD_BOT_ACCESS_TOKEN; secrets可填
