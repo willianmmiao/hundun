@@ -790,7 +790,7 @@ def run():
   print(content)
 
   # 每天 23:00 发送消息推送
-  if beijing_datetime.hour == 12 and beijing_datetime.minute >= 0 and beijing_datetime.minute < 55:
+  if beijing_datetime.hour == 23 and beijing_datetime.minute >= 0 and beijing_datetime.minute < 5:
     send(title=title, content=result)
   elif not beijing_datetime.hour == 12:
     print('未进行消息推送，原因：没到对应的推送时间点\n')
