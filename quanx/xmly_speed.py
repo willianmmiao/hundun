@@ -13,9 +13,11 @@ from util import send, requests_session
 
 cookies1 = "_xmLog=h5&34f98010-8467-4f99-92ac-71664685acb3&2.2.5; 1&_device=iPhone&5B188D84-8E6F-4A3E-AE21-C188894BD1AE&2.1.3; 1&_token=282920760&F1EFC940140CBEA69DD1CEA3751A91E9424AB1A43C2656D2509964334F73D08E7E9046A60545161M14FE18A68BF11CE_; NSUP=42EEE7B5%2C4200D46A%2C1615191998464; XD=Xpbrf1oqCn83z1N7W0eB206CmAMHW1AAb+1w9M963xqmaFuwFQcnFYlMQV+8Y6yH3NIO+SEpUjA1gpLQxXLlSg==; XUM=5B188D84-8E6F-4A3E-AE21-C188894BD1AE; ainr=0; c-oper=%E6%9C%AA%E7%9F%A5; channel=ios-b1; device_model=iPhone 7 Plus; idfa=FEDB0146-EB87-4D73-A267-3CB1026DB68F; impl=com.ximalaya.tingLite; ip=10.206.111.204; net-mode=WIFI; res=1242%2C2208"
 
-cookies2 = ""
+cookies2 = "domain=.ximalaya.com; path=/; channel=ios-b1; impl=com.ximalaya.tingLite; 1&_device=iPhone&40FD0F96-65AB-4ACF-B18C-1AAC9B3DED5F&2.1.3; XUM=40FD0F96-65AB-4ACF-B18C-1AAC9B3DED5F; idfa=40FD0F96-65AB-4ACF-B18C-1AAC9B3DED5F; device_model=iPhone 11; c-oper=%E6%9C%AA%E7%9F%A5; net-mode=WIFI; ip=2409:8121:a820:e7c:ce:8405:100:0; res=828%2C1792; NSUP=; ainr=0; XD=8R49ULACnaqO5Xy3i9lLHTNbbuDZlObkas4VRxmQmW55YCw01WBr6yIYh9ChAaijPGtebwGRxZKN9G8mEdw9vQ==; 1&_token=302166448&B931C1C0340C4D472290B921079EFC628E3AAC0D018CC56D2C2EC99E0D8BDE9732B90FF6B97D168MF6B1AC5BADB9722_"
 
-cookiesList = [cookies1, ]   # 多账号准备
+cookies3 = "1&_device=iPhone&5B188D84-8E6F-4A3E-AE21-C188894BD1AE&2.1.8; 1&_token=307757305&72D8D240140C8FAA302FC3DA3B24D992ACD9125FE74B0B0F812985DB1F089D4528A5ABB6A53F29M14FE18A7F8A1A0A_; NSUP=; XD=Xpbrf1oqCn83z1N7W0eB206CmAMHW1AAb+1w9M963xpnSdDxFU8quDfcq71dzBDh5toPrPSqxDEqKHoifk7evw==; XUM=5B188D84-8E6F-4A3E-AE21-C188894BD1AE; ainr=0; c-oper=%E6%9C%AA%E7%9F%A5; channel=ios-b1; device_model=iPhone 7 Plus; idfa=00000000-0000-0000-0000-000000000000; impl=com.ximalaya.tingLite; ip=10.226.97.213; net-mode=4G; res=1242%2C2208; _xmLog=h5&fe7a1f81-3a6b-455f-baa9-4d77ca521160&2.2.5"
+
+cookiesList = [cookies1,cookies2,cookies3]   # 多账号准备
 
 # 默认不自动提现
 autoTakeOut = True
@@ -23,7 +25,7 @@ autoTakeOut = True
 amount = 20
 takeOutType = 1
 # 提现账户: 1 -> 支付宝 2 -> 微信
-thirdPayType = 1
+thirdPayType = 2
 
 # ac读取环境变量
 if "XMLY_SPEED_COOKIE" in os.environ:
@@ -38,7 +40,7 @@ if "AUTO_TAKE_OUT" in os.environ:
 
 # 自定义设备命名,非必须 ;devices=["iPhone7P","huawei"];与cookiesList对应
 devices = []
-notify_time = 23                            # 通知时间,24小时制,默认19
+notify_time = 19                            # 通知时间,24小时制,默认19
 XMLY_ACCUMULATE_TIME = 1                    # 希望刷时长的,此处置1,默认打开;关闭置0
 UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iting/1.0.12 kdtunion_iting/1.0 iting(main)/1.0.12/ios_1"
 # 非iOS设备的需要的自行修改,自己抓包 与cookie形式类似
