@@ -23,7 +23,7 @@ cookiesList = [cookies1,cookies2,cookies3]   # 多账号准备
 autoTakeOut = True
 # 提现金额
 amount = 20
-takeOutType = 1
+takeOutType = 2
 # 提现账户: 1 -> 支付宝 2 -> 微信
 thirdPayType = 2
 
