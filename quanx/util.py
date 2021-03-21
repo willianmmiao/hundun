@@ -19,7 +19,7 @@ from urllib3.util import Retry
 import re
 
 # 通知服务
-BARK = 'https://api.day.app/vWjojnEs2rRiFzSfRcYoBD'                       # bark服务,此参数如果以http或者https开头则判定为自建bark服务; secrets可填;
+BARK = 'vWjojnEs2rRiFzSfRcYoBD'                       # bark服务,此参数如果以http或者https开头则判定为自建bark服务; secrets可填;
 SCKEY = ''                                                                # Server酱的SCKEY; secrets可填
 TG_BOT_TOKEN = ''           # tg机器人的TG_BOT_TOKEN; secrets可填
 TG_USER_ID = ''                                                 # tg机器人的TG_USER_ID; secrets可填
